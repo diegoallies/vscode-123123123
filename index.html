@@ -1,12 +1,124 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lmk</title>
+    <title>Login form</title>
+    <style>
+        body{
+  background: #0000ff;
+  color: #fff;
+}
+
+label {
+    margin:20px 0;
+    position:relative;
+    display:inline-block;
+  }
+    
+  span {
+    padding:10px;
+    pointer-events: none;
+    position:absolute;
+    left:0;
+    top:0;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity:0.5;
+  }
+  
+  input {
+    padding:10px;
+    outline: none;
+    border: 1px solid #fff;
+    border-bottom-color: #000;
+    width: 300px;
+  }
+  
+  input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    color: #fff;
+    transform: scale(0.75) translateY(-100%) translateX(-20px);
+  }
+  input:focus + span, input:not(:-ms-input-placeholder) + span {
+    opacity:1;
+    transform: scale(0.75) translateY(-100%) translateX(-30px);
+  }
+  .box{
+      text-align: center;
+      margin-top: 5%;
+  }
+
+span{
+      font-size: 18px;
+      color: #000;
+      font-family: monospace;
+  }
+
+  input:focus{
+      border-bottom-color: purple;
+  }
+
+  #book-choice{
+    border: 1px solid #000;
+    width: 300px;
+  }
+
+  input::placeholder{
+    font-size: 13px;
+  }
+
+  button{
+    margin-top: 10px;
+    width: 70px;
+    font-family: monospace;
+    font-weight: bold;
+    border-radius: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  #quantity{
+    border: 1px solid #000;
+  }
+    </style>
 </head>
 <body>
-    testet
+    <div class="box">
+        <form action="https://formspree.io/f/xvodyolo" method="POST" autocomplete="on">
+            <h1>Customer</h1>
+            <label>
+                <input type="text" placeholder=" " required autofocus name="Name">
+                <span>Name</span>
+            </label><br>
+            <label>
+                <input type="tel" placeholder=" " name="Telephone" onKeyPress="if(this.value.length==12) return false;" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <span>Telephone</span>
+            </label><br>
+            <label>
+                <input type="email" placeholder=" " required name="Email">
+                <span>Email</span><br>
+            </label>
+            <h1 class="Books">Books</h1>
+            <label for="Books" id="choose">Choose a book:</label><br>
+                <input list="Books" id="book-choice" name="book-choice" placeholder="choose a book" multiple>
+                <datalist id="Books" minlength="1" maxlength="5">
+                    <option value="Life of pi">Life of pi</option>
+                    <option value="ANIME">ANIME</option>
+                    <option value="Romeo & Juliet">Romeo & Juliet</option>
+                    <option value="Harry Potter">Harry Potter</option>
+                    <option value="Million Dollar Moves">Million Dollar Moves</option>
+                </datalist><br>
+                <h3>Quantity:[maximum 5]</h3>
+            <label>
+                <input id="quantity" type="number" min="1" max="5" name="Quantity" placeholder="Quantity" required>
+            </label><br>
+        <button type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+   <script src="javascript.js"></script>
 </body>
-</html> 
+</html>
